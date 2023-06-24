@@ -10,7 +10,7 @@ const ANSI_CODES = (
 
 proc showHelp =
   echo "usage: nemesis-pkg [options] [arguments]"
-  echo "install <pkg>\t\tinstall a package"
+  echo "install <pkg>\tinstall a package"
   echo "uninstall <pkg>\tremove a package"
   echo "sync\t\tsynchronize package databases"
 
