@@ -31,13 +31,18 @@ proc getPackageArg: string =
 proc nemesisInstall* =
   let pkgName = getPackageArg()
   writeHistory(fmt"install {pkgName}")
-  echo fmt"{ANSI_CODES.red}error: this feature is not yet implemented. :("
+  echo fmt"{ANSI_CODES.red}error{ANSI_CODES.reset}: this feature is not yet implemented. :("
   quit 0
 
 proc nemesisUninstall* =
   let pkgName = getPackageArg()
   writeHistory(fmt"install {pkgName}")
-  echo fmt"{ANSI_CODES.red}error: this feature is not yet implemented. :("
+  echo fmt"{ANSI_CODES.red}error{ANSI_CODES.reset}: this feature is not yet implemented. :("
+  quit 0
+
+proc nemesisSync* =
+  writeHistory(fmt"sync repositories")
+  echo fmt"{ANSI_CODES.red}error{ANSI_CODES.reset}: this feature is not yet implemented. :("
   quit 0
 
 proc main =
