@@ -1,4 +1,4 @@
-import std/[strformat, os, times], utils, history
+import std/[strformat, strutils, os, times], utils, history
 
 const ANSI_CODES = (
     red: "\x1b[31m",
