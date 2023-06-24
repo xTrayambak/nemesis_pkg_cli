@@ -9,4 +9,4 @@ proc writeHistory*(currentOpr: string) =
  else:
   let file = open(histfile, fmWrite)
   defer: file.close()
-  file.write(fmt"{now()} {currentOpr}")
+  file.write(fmt"\n{now()} {currentOpr}")
