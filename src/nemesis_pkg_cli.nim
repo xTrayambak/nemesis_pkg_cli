@@ -9,9 +9,9 @@ const ANSI_CODES = (
 )
 
 proc showHelp =
-  echo "usage: nemesis-pkg [options] PACKAGE"
-  echo "install\t\tinstall a package"
-  echo "uninstall\tremove a package"
+  echo "usage: nemesis-pkg [options] [arguments]"
+  echo "install <pkg>\t\tinstall a package"
+  echo "uninstall <pkg>\tremove a package"
   echo "sync\t\tsynchronize package databases"
 
 proc getAction: string =
