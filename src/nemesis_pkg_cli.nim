@@ -29,7 +29,12 @@ proc nemesisUninstall* =
   echo fmt"{RED}error{RESET}: this feature is not yet implemented. :("
   quit 0
 
+proc userTermination* {.noconv.} =
+  echo fmt"{RED}error{RESET}: process manually terminated by user."
+  quit 1
+  
 proc main =
+  setControlCHook(userTermination)
   let action = getAction()
 
   if action.actionRequiresRoot() and not isAdmin():
