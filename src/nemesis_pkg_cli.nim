@@ -1,5 +1,5 @@
 import std/[strformat, strutils, os], 
-    utils, syncrepos, history, colors, installpkg
+    utils, syncrepos, history, colors, installpkg, buildfilesmgr
 
 proc showHelp =
   echo "usage: nemesis-pkg [options] [arguments]"
@@ -42,5 +42,7 @@ proc main =
     nemesisUninstall()
   elif action.toLowerAscii() == "sync":
     nemesisSync()
+  elif action.toLowerAscii() == "clear-build-files":
+    nemesisClearBuildFiles()
     
 when isMainModule: main()

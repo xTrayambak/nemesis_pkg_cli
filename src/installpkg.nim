@@ -21,7 +21,10 @@ proc nemesisInstallPkg*(db: Database, pkg: string, isRetry: bool = false) =
   if res.exitCode != 0:
    echo fmt"{RED}{res.output}{RESET}"
    echo fmt"{RED}error{RESET}: compilation of package failed! If this is an official NemesisOS package, report it to the devs!"
-   
+   writeHistory(fmt"failed to install package {pkg}@{packageVersion}; error is thrown in stdout")
+  elif res.exitCode == 0:
+   echo fmt"{GREEN}success{RESET}: {pkg}@{packageVersion} successfully downloaded!"
+   writeHistory(fmt"installed package {pkg}@{packageVersion}")
  except KeyError:
   if not isRetry:
    nemesisSync()

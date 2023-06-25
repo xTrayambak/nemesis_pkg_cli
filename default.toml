@@ -4,4 +4,7 @@ security = "https://raw.githubusercontent.com/Nemesis-OS/packages-security/main/
 
 [download]
 workers = 4
-repo_sort = "fatest"
+repo_sort = "fastest"
+
+[build]
+files_path = "/tmp"

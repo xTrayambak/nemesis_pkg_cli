@@ -3,7 +3,8 @@ import std/strformat
 const ROOT_REQUIRED_ACTIONS = @[
  "install",
  "uninstall",
- "sync"
+ "sync",
+ "clear-build-files"
 ]
 
 proc actionRequiresRoot*(action: string): bool {.inline.} =
