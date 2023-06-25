@@ -5,8 +5,8 @@ proc writeHistory*(currentOpr: string) =
  if fileExists(histfile):
   let file = open(histfile, fmAppend)
   defer: file.close()
-  file.write(fmt"{now()} {currentOpr}")
+  file.write(fmt"\n{now()} {currentOpr}")
  else:
   let file = open(histfile, fmWrite)
   defer: file.close()
-  file.write(fmt"\n{now()} {currentOpr}")
+  file.write(fmt"{now()} {currentOpr}")
