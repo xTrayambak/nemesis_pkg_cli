@@ -1,4 +1,4 @@
-import curly, utils, parsetoml, std/strformat
+import curly, parsetoml, std/strformat
 
 proc getBuildInfo*(repo, pkg: string): TomlValueRef =
  let 

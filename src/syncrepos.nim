@@ -1,4 +1,4 @@
-import config, history, curly, databases, parsetoml, colors, std/[tables, os, strformat, strutils]
+import config, history, curly, databases, parsetoml, colors, std/[tables, strformat, strutils]
 
 proc synchronize(name, url: string, curlpool: CurlPool) =
  echo fmt"{GREEN}{name}{RESET}: {url}"

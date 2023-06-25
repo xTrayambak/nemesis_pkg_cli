@@ -1,5 +1,5 @@
-import history, databases, pkginfo, syncrepos, download, parsetoml, utils, colors, 
-       std/[rdstdin, strutils, strformat, os, osproc]
+import history, databases, pkginfo, syncrepos, download, parsetoml, colors, 
+       std/[strformat, os, osproc]
 
 proc nemesisInstallPkg*(db: Database, pkg: string, isRetry: bool = false) =
  try:

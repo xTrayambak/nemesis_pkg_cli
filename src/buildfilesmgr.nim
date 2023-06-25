@@ -1,4 +1,4 @@
-import colors, config, parsetoml, std/[os, osproc, strformat, strutils]
+import colors, config, parsetoml, std/[os, strformat, strutils]
 
 proc nemesisClearBuildFiles* =
  var counter: int = 0
