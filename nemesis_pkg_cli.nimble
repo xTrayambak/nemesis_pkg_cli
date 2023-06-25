@@ -11,3 +11,4 @@ bin           = @["nemesis_pkg_cli"]
 # Dependencies
 
 requires "nim >= 1.6.12"
+requires "curly"
