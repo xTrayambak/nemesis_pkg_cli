@@ -1,0 +1,7 @@
+[repos]
+release = "https://raw.githubusercontent.com/Nemesis-OS/packages-release/main/release.PKGLIST"
+security = "https://raw.githubusercontent.com/Nemesis-OS/packages-security/main/security.PKGLIST"
+
+[download]
+workers = 4
+repo_sort = "fatest"

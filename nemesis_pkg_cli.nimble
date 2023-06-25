@@ -12,3 +12,5 @@ bin           = @["nemesis_pkg_cli"]
 
 requires "nim >= 1.6.12"
 requires "curly"
+requires "parsetoml"
+requires "uuids"

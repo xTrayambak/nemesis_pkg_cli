@@ -1,4 +1,5 @@
-import std/[strformat, strutils, os], utils, syncrepos, history, colors
+import std/[strformat, strutils, os], 
+    utils, syncrepos, history, colors, installpkg
 
 proc showHelp =
   echo "usage: nemesis-pkg [options] [arguments]"
@@ -22,12 +23,6 @@ proc getPackageArg: string =
     showHelp()
     quit 1
 
-proc nemesisInstall* =
-  let pkgName = getPackageArg()
-  writeHistory(fmt"install {pkgName}")
-  echo fmt"{RED}error{RESET}: this feature is not yet implemented. :("
-  quit 0
-
 proc nemesisUninstall* =
   let pkgName = getPackageArg()
   writeHistory(fmt"install {pkgName}")
@@ -42,7 +37,7 @@ proc main =
     quit 1
 
   if action.toLowerAscii() == "install":
-    nemesisInstall()
+    nemesisInstallPkgs(@[getPackageArg()])
   elif action.toLowerAscii() == "uninstall":
     nemesisUninstall()
   elif action.toLowerAscii() == "sync":
