@@ -1,11 +1,31 @@
 import history, std/[os, marshal, strformat, tables]
 
-type Database* = ref object of RootObj
- name*: string # eg. release, security, backports
- packages*: Table[string, string] # pkg name, pkg version
+type
+ Package* = ref object of RootObj
+  name*: string
+  version*: string
+  files*: seq[string]
+  
+ Database* = ref object of RootObj
+  name*: string # eg. release, security, backports
+  packages*: seq[Package]
+
+proc isInstalled*(db: Database, packagename: string): bool =
+ for pkg in db.packages:
+  if pkg.name == packagename:
+   return true
+
+ return false
+
+proc set*(db: Database, pkg, version: string, files: seq[string]) =
+ db.packages.add(Package(name: pkg, version: version, files: files))
 
 proc getVersion*(db: Database, packagename: string): string =
- db.packages[packagename]
+ for pkg in db.packages:
+  if pkg.name == packagename:
+   return pkg.version
+
+ "0.0.1"
 
 proc save*(database: Database) =
  writeHistory(fmt"Saving database '{database.name}'")
@@ -25,4 +45,7 @@ proc createDatabase*(name: string): Database =
  let
   nemesisPath = fmt"/etc/.nemesis-pkg"
   computedDBPath = fmt"{nemesisPath}/{name}.nemdb"
- to[Database](readFile(computedDBPath))
+ try:
+  to[Database](readFile(computedDBPath))
+ except IOError:
+  Database(name: name, packages: @[])

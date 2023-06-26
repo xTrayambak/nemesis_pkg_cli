@@ -1,11 +1,14 @@
 import std/[strformat, strutils, os], 
-    utils, syncrepos, history, colors, installpkg, buildfilesmgr
+    utils, syncrepos, history, colors, 
+    uninstallpkg, repolist, installlist, 
+    installpkg, buildfilesmgr
 
 proc showHelp =
   echo "usage: nemesis-pkg [options] [arguments]"
   echo "install <pkg>\tinstall a package"
   echo "uninstall <pkg>\tremove a package"
   echo "sync\t\tsynchronize package databases"
+  echo "repo-ls\t\tlist all packages in all repositories"
   echo "update\t\tupdate all packages from current database"
   echo "upgrade\t\tsync databases and perform an update"
 
@@ -44,10 +47,16 @@ proc main =
   if action.toLowerAscii() == "install":
     nemesisInstallPkgs(@[getPackageArg()])
   elif action.toLowerAscii() == "uninstall":
-    nemesisUninstall()
+    nemesisUninstallPkgs(@[getPackageArg()])
   elif action.toLowerAscii() == "sync":
     nemesisSync()
   elif action.toLowerAscii() == "clear-build-files":
     nemesisClearBuildFiles()
-    
+  elif action.toLowerAscii() == "repo-ls":
+    nemesisRepositoryList()
+  elif action.toLowerAscii() == "installed-ls":
+    nemesisInstalledList()
+  else:
+    showHelp()
+
 when isMainModule: main()

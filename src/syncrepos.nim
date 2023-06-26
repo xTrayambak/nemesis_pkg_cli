@@ -22,7 +22,7 @@ proc synchronize(name, url: string, curlpool: CurlPool) =
   echo fmt"{RED}error{RESET}: {name} returned empty response!"
   writeHistory(fmt"GET {url} failed, endpoint returned empty response!")
 
- var pkgs = {"": ""}.toTable
+ var pkgs: seq[Package] = @[]
 
  for pkginfo in response.body.splitLines():
   let
@@ -33,7 +33,7 @@ proc synchronize(name, url: string, curlpool: CurlPool) =
     name = data[0]
     version = data[1]
 
-   pkgs[name] = version
+   pkgs.add(Package(name: name, version: version, files: @[]))
  
  let database = Database(name: name, packages: pkgs)
  database.save()
